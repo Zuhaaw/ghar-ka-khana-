@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Shopping Cart – GharKaKhana</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body data-page="cart">
+  <header id="site-header"></header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title mb-1">Your Shopping Cart</h1>
+      <p class="sample-note mb-4">Demonstration only. Prices and the delivery fee are illustrative; no real order or payment is processed.</p>
+
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <section aria-labelledby="itemsTitle">
+            <h2 class="h5" id="itemsTitle">Cart Items</h2>
+            <div id="cartItems"></div>
+            <a href="explore.html" class="btn btn-outline-gkk mt-3"><i class="bi bi-arrow-left"></i> Continue Shopping</a>
+          </section>
+
+          <section class="mt-5" aria-labelledby="deliveryTitle">
+            <h2 class="h5" id="deliveryTitle">Delivery Information</h2>
+            <form id="checkoutForm" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="fullName" class="form-label">Full name</label>
+                  <input type="text" id="fullName" class="form-control" required minlength="3" autocomplete="name">
+                  <div class="invalid-feedback">Please enter your full name.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="mobile" class="form-label">Mobile number</label>
+                  <input type="tel" id="mobile" class="form-control" required pattern="^(03\d{9}|\+923\d{9})$" placeholder="03XXXXXXXXX" inputmode="tel" autocomplete="tel">
+                  <div class="invalid-feedback">Enter a valid Pakistani mobile number (e.g. 03001234567).</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="checkoutCity" class="form-label">City</label>
+                  <select id="checkoutCity" class="form-select" required></select>
+                  <div class="invalid-feedback">Please select your city.</div>
+                </div>
+                <div class="col-12">
+                  <label for="address" class="form-label">Delivery address</label>
+                  <input type="text" id="address" class="form-control" required minlength="10" autocomplete="street-address">
+                  <div class="invalid-feedback">Please enter your full address (at least 10 characters).</div>
+                </div>
+                <div class="col-12">
+                  <label for="instructions" class="form-label">Additional delivery instructions <small class="text-muted">(optional)</small></label>
+                  <textarea id="instructions" class="form-control" rows="2"></textarea>
+                </div>
+              </div>
+
+              <fieldset class="mt-4">
+                <legend class="h5">Payment Method</legend>
+                <p class="sample-note">Sample options only. No real payment gateway is connected.</p>
+                <div class="d-grid gap-2">
+                  <div class="payment-option form-check"><input class="form-check-input" type="radio" name="payment" id="payCod" value="Cash on Delivery" checked><label class="form-check-label w-100" for="payCod"><i class="bi bi-cash-coin me-2"></i>Cash on Delivery</label></div>
+                  <div class="payment-option form-check"><input class="form-check-input" type="radio" name="payment" id="payEasy" value="Easypaisa"><label class="form-check-label w-100" for="payEasy"><i class="bi bi-phone me-2"></i>Easypaisa</label></div>
+                  <div class="payment-option form-check"><input class="form-check-input" type="radio" name="payment" id="payJazz" value="JazzCash"><label class="form-check-label w-100" for="payJazz"><i class="bi bi-wallet2 me-2"></i>JazzCash</label></div>
+                </div>
+              </fieldset>
+            </form>
+          </section>
+        </div>
+
+        <aside class="col-lg-5">
+          <div class="summary-card sticky-lg">
+            <h2 class="h5 mb-3">Order Summary</h2>
+            <div class="d-flex justify-content-between mb-2"><span>Subtotal</span><span id="sumSubtotal">Rs. 0</span></div>
+            <div class="d-flex justify-content-between mb-2"><span>Delivery fee <small class="text-muted">(illustrative)</small></span><span id="sumDelivery">Rs. 0</span></div>
+            <hr>
+            <div class="d-flex justify-content-between fw-bold fs-5 mb-3"><span>Total</span><span id="sumTotal">Rs. 0</span></div>
+            <div class="alert alert-danger d-none" id="emptyCartAlert" role="alert">Your cart is empty. Please add some meals before placing an order.</div>
+            <button type="button" class="btn btn-gkk w-100 py-2" id="placeOrderBtn">Place Order</button>
+            <p class="small text-muted text-center mt-2 mb-0">This is a demonstration. No real order is placed.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- Order success modal -->
+  <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h2 class="modal-title h5 text-success" id="orderModalLabel"><i class="bi bi-check-circle-fill me-2"></i>Order Placed (Demo)</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Sample order ID: <strong id="orderId"></strong></p>
+          <h3 class="h6">Delivery details</h3>
+          <p id="orderCustomer"></p>
+          <h3 class="h6">Items</h3>
+          <ul class="list-unstyled" id="orderItems"></ul>
+          <div id="orderTotals"></div>
+          <div class="alert alert-warning small mt-3 mb-0"><i class="bi bi-info-circle me-1"></i>This is a demonstration. No real order or payment has been processed.</div>
+        </div>
+        <div class="modal-footer border-0">
+          <a href="explore.html" class="btn btn-gkk">Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

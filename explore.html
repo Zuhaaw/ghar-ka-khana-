@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore Homemade Food – GharKaKhana</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body data-page="explore">
+  <header id="site-header"></header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1 class="section-title">Explore Homemade Food Near You</h1>
+        <p class="section-sub">Find your favourite homemade meals from local home chefs.</p>
+        <p class="badge text-bg-light d-none" id="locationNote"></p>
+        <form id="searchForm" role="search" class="mt-2">
+          <div class="input-group input-group-lg">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <label for="searchInput" class="visually-hidden">Search by food, chef or city</label>
+            <input type="search" id="searchInput" class="form-control" placeholder="Search by food name, chef name or city">
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section pt-4">
+      <div class="container">
+        <!-- Category pills -->
+        <div class="pill-scroll mb-3" id="categoryPills" aria-label="Food categories"></div>
+
+        <p class="sample-note">Prices, ratings, delivery fees, preparation times and chef information are illustrative sample data.</p>
+
+        <button class="btn btn-outline-gkk d-lg-none mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="filters">
+          <i class="bi bi-sliders"></i> Filters
+        </button>
+
+        <div class="row g-4">
+          <!-- Filter sidebar (collapsible on mobile) -->
+          <aside class="col-lg-3">
+            <div class="collapse d-lg-block" id="filters">
+              <div class="filter-box sticky-lg">
+                <h2 class="h6 mb-3">Filters</h2>
+                <div class="mb-3"><label for="filterCity" class="form-label small">City</label><select id="filterCity" class="form-select"></select></div>
+                <div class="mb-3"><label for="filterCategory" class="form-label small">Food category</label><select id="filterCategory" class="form-select"></select></div>
+                <div class="mb-3"><label for="filterPrice" class="form-label small">Price range (PKR)</label>
+                  <select id="filterPrice" class="form-select">
+                    <option value="any">Any price</option>
+                    <option value="0-500">Under Rs. 500</option>
+                    <option value="500-1000">Rs. 500 – 1,000</option>
+                    <option value="1000-3000">Rs. 1,000 – 3,000</option>
+                    <option value="3000-999999">Above Rs. 3,000</option>
+                  </select></div>
+                <div class="mb-3"><label for="filterRating" class="form-label small">Minimum rating</label>
+                  <select id="filterRating" class="form-select">
+                    <option value="0">Any rating</option>
+                    <option value="4">4.0 &amp; above</option>
+                    <option value="4.5">4.5 &amp; above</option>
+                    <option value="4.8">4.8 &amp; above</option>
+                  </select></div>
+                <div class="mb-3"><label for="filterTime" class="form-label small">Preparation time</label>
+                  <select id="filterTime" class="form-select">
+                    <option value="any">Any time</option>
+                    <option value="0-30">Up to 30 min</option>
+                    <option value="0-60">Up to 1 hour</option>
+                    <option value="61-999999">Over 1 hour (e.g. cakes)</option>
+                  </select></div>
+                <button type="button" class="btn btn-outline-gkk w-100" id="clearFilters"><i class="bi bi-x-circle"></i> Clear Filters</button>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Food listing -->
+          <div class="col-lg-9">
+            <p class="fw-medium mb-3" id="resultCount" aria-live="polite"></p>
+            <div class="row g-4" id="foodGrid"></div>
+            <div class="text-center py-5 d-none" id="noResults">
+              <i class="bi bi-emoji-frown display-4 text-muted"></i>
+              <h2 class="h5 mt-3">No meals match your search</h2>
+              <p class="text-muted">Try changing your filters.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

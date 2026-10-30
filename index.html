@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GharKaKhana – Homemade Food, Delivered with Love</title>
+  <meta name="description" content="Discover delicious homemade meals prepared by local home chefs across Pakistan.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body data-page="home">
+  <header id="site-header"></header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="container py-5">
+        <h1 id="heroTitle">Homemade Food, Delivered with Love.</h1>
+        <p class="lead mb-4 col-lg-7 px-0">Discover delicious homemade meals prepared by local home chefs across Pakistan.</p>
+        <form class="hero-search" id="heroForm">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-geo-alt-fill text-accent"></i></span>
+            <label for="heroLocation" class="visually-hidden">Delivery location</label>
+            <input type="text" id="heroLocation" class="form-control" placeholder="Enter your delivery location">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <label for="heroSearch" class="visually-hidden">Search food</label>
+            <input type="search" id="heroSearch" class="form-control" placeholder="What are you craving today?">
+          </div>
+          <button type="submit" class="btn btn-accent">Explore Food</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section" aria-labelledby="catTitle">
+      <div class="container">
+        <h2 class="section-title mb-4" id="catTitle">What are you in the mood for?</h2>
+        <div class="row g-3" id="categoryGrid"></div>
+      </div>
+    </section>
+
+    <!-- Popular meals -->
+    <section class="section bg-cream" aria-labelledby="popTitle">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+          <div>
+            <h2 class="section-title mb-0" id="popTitle">Popular Homemade Meals</h2>
+            <p class="sample-note mb-0">Prices, ratings and preparation times are illustrative sample data.</p>
+          </div>
+          <a href="explore.html" class="btn btn-outline-gkk">See all meals</a>
+        </div>
+        <div class="row g-4" id="popularMeals"></div>
+      </div>
+    </section>
+
+    <!-- Cakes by Chef Hira -->
+    <section class="section" aria-labelledby="cakeTitle">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+          <div>
+            <h2 class="section-title mb-0" id="cakeTitle">Customized Cakes by Chef Hira</h2>
+            <p class="sample-note mb-0">Freshly baked cakes for every celebration. Base prices are illustrative; final price may vary with decorations.</p>
+          </div>
+          <a href="explore.html?cat=Desserts" class="btn btn-outline-gkk">More desserts</a>
+        </div>
+        <div class="row g-4" id="cakeMeals"></div>
+      </div>
+    </section>
+
+    <!-- Featured chefs -->
+    <section class="section bg-cream" id="chefs" aria-labelledby="chefTitle">
+      <div class="container">
+        <h2 class="section-title mb-1" id="chefTitle">Featured Home Chefs</h2>
+        <p class="sample-note mb-4">Chef profiles and ratings are illustrative sample data.</p>
+        <div class="row g-4" id="chefGrid"></div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" aria-labelledby="howTitle">
+      <div class="container">
+        <h2 class="section-title text-center mb-4" id="howTitle">How GharKaKhana Works</h2>
+        <div class="row g-4">
+          <div class="col-md-4 step"><div class="step-icon"><i class="bi bi-search-heart"></i></div><h3 class="h5">1. Discover Homemade Food</h3><p class="text-muted">Explore meals prepared by local home chefs.</p></div>
+          <div class="col-md-4 step"><div class="step-icon"><i class="bi bi-cart-check"></i></div><h3 class="h5">2. Choose Your Favourite</h3><p class="text-muted">Select dishes and add them to your cart.</p></div>
+          <div class="col-md-4 step"><div class="step-icon"><i class="bi bi-emoji-smile"></i></div><h3 class="h5">3. Enjoy Your Meal</h3><p class="text-muted">Place your order and enjoy homemade food.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promo -->
+    <section class="section pt-0">
+      <div class="container">
+        <div class="promo">
+          <h2 class="fw-bold">Missing the Taste of Home?</h2>
+          <p class="lead">Discover fresh, affordable homemade meals prepared with care.</p>
+          <a href="explore.html" class="btn btn-accent">Explore Meals</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section bg-cream" id="about" aria-labelledby="aboutTitle">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-md-6">
+            <h2 class="section-title" id="aboutTitle">About Us</h2>
+            <p>GharKaKhana is a homemade food marketplace concept that connects Pakistani home cooks with customers who miss the taste of home-cooked meals.</p>
+            <p class="mb-0 text-muted">This website is a frontend-only university semester project. Orders are simulated; no real orders or payments are processed.</p>
+          </div>
+          <div class="col-md-6"><img src="images/kitchen.jpg" alt="A home kitchen where meals are prepared" class="about-img" loading="lazy" data-emoji="🍳" onerror="imgFallback(this)"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
